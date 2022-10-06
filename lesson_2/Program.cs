@@ -4,7 +4,7 @@
 782 -> 8
 918 -> 1
 */
-/*
+
 {
     int getSecondDigit ( int number )
     {
@@ -27,7 +27,7 @@
         Console.WriteLine ( "Number should contain three digits. No more, not less!" );
     else
         Console.WriteLine ( $"Second digit is {secondDigit}" );
-}*/
+}
 
 //Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 /*
@@ -69,3 +69,17 @@
 7 -> да
 1 -> нет
 */
+
+{
+    bool[] weekends = new bool[] {false, false, false, false, false, true, true};
+
+     Console.WriteLine ( "Task 15" );
+
+    Console.Write ( "Input day number: " );
+    int number = Convert.ToInt32 ( Console.ReadLine () );
+
+    if ( number < 1 || number > 7 )
+        Console.WriteLine ( "Wrong day of the week number " + number );
+    else
+        Console.WriteLine ( $"Day {number} of the week is weekend = " + ( weekends [number - 1] ? "yes" : "no" ) );
+}
