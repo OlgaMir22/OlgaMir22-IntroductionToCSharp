@@ -5,6 +5,30 @@
 918 -> 1
 */
 
+{
+    int getSecondDigit ( int number )
+    {
+        if ( number < 100 || number > 999 )
+            return -1;
+        
+        int numberMod10 = number / 10;
+        int secondDigit = numberMod10 % 10;
+        return secondDigit;
+    }
+
+    Console.WriteLine ( "Task 10" );
+
+    Console.Write ( "Input number: " );
+    int number = Convert.ToInt32 ( Console.ReadLine () );
+
+    int secondDigit = getSecondDigit ( number );
+
+    if ( secondDigit < 0 )
+        Console.WriteLine ( "Number should contain three digits. No more, not less!" );
+    else
+        Console.WriteLine ( $"Second digit is {secondDigit}" );
+}
+
 //Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 /*
 645 -> 5
