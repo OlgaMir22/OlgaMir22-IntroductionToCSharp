@@ -1,10 +1,11 @@
 ﻿/*
-Задача 19. Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+Задача 19
+Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
 14212 -> нет
 12821 -> да
 23432 -> да
 */
-/*
+
 {
     Console.WriteLine ( "Task 19" );
 
@@ -32,7 +33,7 @@
         else
             Console.WriteLine ( $"Number {number} is NOT a polyndrom" );
     }
-}*/
+}
 
 /*
 Задача 21
@@ -63,4 +64,27 @@ A (7,-5, 0); B (1,-1,9) -> 11.53
         dz = ( z2 - z1 );
     double dist = Math.Sqrt ( dx * dx + dy * dy + dz * dz );
     Console.WriteLine ( "The distance in 3D space is: " + Math.Round ( dist, 2 ) );
+}
+
+/*
+Задача 23
+Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+3 -> 1, 8, 27
+5 -> 1, 8, 27, 64, 125
+*/
+
+{
+    Console.WriteLine ( "Task 23" );
+
+    Console.Write ( "Input number N: " );
+    int N = Convert.ToInt32 ( Console.ReadLine () );
+
+    if ( N < 1 )
+        Console.WriteLine ( "N should be greater 0." );
+    else
+    {
+        for ( int i = 1; i < N; ++i )
+            Console.Write ( Math.Pow ( i, 3 ) + ", " );
+        Console.Write ( Math.Pow ( N, 3 ) );
+    }
 }
