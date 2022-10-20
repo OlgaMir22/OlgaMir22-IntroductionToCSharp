@@ -54,3 +54,37 @@ void outputArray ( int [] arr )
         Console.WriteLine ( $" contains {evens} even items." );
     }
 }
+
+/*
+Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+[3, 7, 23, 12] -> 19
+[-4, -6, 89, 6] -> 0
+*/
+
+{
+
+    int sumOddItems ( int [] arr )
+    {
+        int oddsSum = 0;
+        for ( int i = 0; i < arr.Length; ++i )
+            if ( i % 2 == 1 )
+                oddsSum = oddsSum + arr [i];
+        return oddsSum;
+    }
+
+    Console.WriteLine ( "Task 36" );
+
+    Console.Write ( "Input array length N: " );
+    int N = Convert.ToInt32 ( Console.ReadLine () );
+
+    if ( N <= 0 )
+        Console.WriteLine ( $"Power {N} is not a valid array length." );
+    else
+    {
+        int [] array = generateArray ( N, -100, 100 );
+        outputArray ( array );
+
+        int oddsSum = sumOddItems ( array );
+        Console.WriteLine ( $" has summ of odd items equal to {oddsSum}." );
+    }
+}
