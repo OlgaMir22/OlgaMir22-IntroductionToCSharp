@@ -3,7 +3,7 @@
 0, 7, 8, -2, -2 -> 2
 1, -7, 567, 89, 223-> 4
 */
-/*
+
 {
     int [] readArray ( int M )
     {
@@ -38,7 +38,7 @@
 
         Console.WriteLine ( $"You have entered {positives} positive numbers." );
     }
-}*/
+}
 
 /*
 Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, 
