@@ -217,6 +217,8 @@ void printInt2dArray ( int [,] arr )
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
+
+/*
 {
     int [,,] generate3dIntUniqueArray ( int m, int n, int k )
     {
@@ -281,5 +283,104 @@ void printInt2dArray ( int [,] arr )
     {
         int [,,] arr = generate3dIntUniqueArray ( m, n, k );
         print3dIntArray ( arr );
+    }
+}
+*/
+
+/*
+Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07
+*/
+
+{
+    int [,] createIntZeroArray ( int m, int n )
+    {
+        int [,] result = new int [m, n];
+        for ( int i = 0; i < m; ++i )
+        {
+            for ( int j = 0; j < n; ++j )
+                result [i, j] = 0;
+        }
+
+        return result;
+    }
+
+    int stepArrayFrom ( ref int [,] arr, ref int x, ref int y, ref int index, int stepX, int stepY )
+    {
+        int stepsCount = 0;
+        do
+        {
+            int newX = x + stepX;
+            int newY = y + stepY;
+
+            //Console.WriteLine ( $"{newX}, {newY}" );
+
+            if ( newX < 0 || newX >= arr.GetLength ( 0 ) )
+                return stepsCount;
+            
+            if ( newY < 0 || newY >= arr.GetLength ( 1 ) )
+                return stepsCount;
+
+            if ( arr [newX, newY] != 0 )
+                return stepsCount;
+
+            ( x, y ) = ( newX, newY );
+
+            arr [x, y] = ++index;
+            ++stepsCount;
+        }   
+        while (true);
+    }
+
+    void fillSpiralArray ( ref int [,] arr )
+    {
+        int x = 0, y = 0, index = 1;
+        arr [x, y] = index;
+        do 
+        {
+            if ( stepArrayFrom ( ref arr, ref x, ref y, ref index, 0, 1 ) == 0 ) 
+                return;
+
+            if ( stepArrayFrom ( ref arr, ref x, ref y, ref index, 1, 0 ) == 0 ) 
+                return;
+            
+            if ( stepArrayFrom ( ref arr, ref x, ref  y, ref index, 0, -1 ) == 0 ) 
+                return;
+            
+            if ( stepArrayFrom ( ref arr, ref x, ref  y, ref index, -1, 0 ) == 0 ) 
+                return;
+        }
+        while ( true );
+    }
+
+    void printInt2dArray2Digits ( int [,] arr )
+{
+    for ( int i = 0; i < arr.GetLength (0); ++i )
+    {
+        for ( int j = 0; j < arr.GetLength (1); ++j )
+            Console.Write ( arr [i, j].ToString ( "00" ) + " " );
+        Console.WriteLine ( "" );
+    }
+}
+
+    Console.WriteLine ( "Task 62" );
+
+    Console.Write ( "Input row count m: " );
+    int m = Convert.ToInt32 ( Console.ReadLine () );
+
+    Console.Write ( "Input col count n: " );
+    int n = Convert.ToInt32 ( Console.ReadLine () );
+
+    if ( m <= 0 || n <= 0 )
+        Console.WriteLine ( $"Row count {m} or col count {n} is not a valid." );
+    else
+    {
+        int [,] arr = createIntZeroArray ( m, n );
+        fillSpiralArray ( ref arr );
+        printInt2dArray2Digits ( arr );
     }
 }
