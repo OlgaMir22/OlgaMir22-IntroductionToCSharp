@@ -33,7 +33,7 @@ void printInt2dArray ( int [,] arr )
         Console.WriteLine ( "" );
     }
 }
-
+/*
 {
     int [,] sortArrayRows ( int [,] arr )
     {
@@ -70,7 +70,7 @@ void printInt2dArray ( int [,] arr )
         Console.WriteLine ( "Result array: " );
         printInt2dArray ( arr );
     }
-}
+}*/
 
 /*
 Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
@@ -81,7 +81,7 @@ void printInt2dArray ( int [,] arr )
 5 2 6 7
 Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 */
-
+/*
 {   
     int [] calcRowsSums ( int [,] arr )
     {
@@ -146,5 +146,63 @@ void printInt2dArray ( int [,] arr )
 
         int minRowIndex = findMinIndex ( rowsSums );
         Console.Write ( $"Row index with minimal items : {minRowIndex}" );
+    }
+}*/
+
+/*
+Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+Например, даны 2 матрицы:
+2 4 | 3 4
+3 2 | 3 3
+Результирующая матрица будет:
+18 20
+15 18
+*/
+{
+    int [,] multiply ( int [,] a, int [,] b )
+    {
+        int resultRows = a.GetLength (0);
+        int resultCols = b.GetLength (1);
+        int [,] result = generateInt2dArray ( resultRows, resultCols, 0, 0 );
+        for ( int i = 0; i < result.GetLength (0); ++i )
+        {
+            for ( int j = 0; j < result.GetLength (1); ++j )
+            {
+                for ( int k = 0; k < a.GetLength (1); ++k )
+                {
+                    result [ i, j ] += a [i, k] * b [k, j];
+                }
+            }
+        }
+
+        return result;
+    }
+
+    Console.WriteLine ( "Task 58" );
+
+    Console.Write ( "Input result row count m: " );
+    int m = Convert.ToInt32 ( Console.ReadLine () );
+
+    Console.Write ( "Input result col count n: " );
+    int n = Convert.ToInt32 ( Console.ReadLine () );
+
+    Console.Write ( "Input first matrix col count and second matrix row count k: " );
+    int k = Convert.ToInt32 ( Console.ReadLine () );
+
+    if ( m <= 0 || n <= 0 || k <= 0 )
+        Console.WriteLine ( $"Row matrix sizes {m} or {n} or {k} are not a valid." );
+    else
+    {
+        int [,] a = generateInt2dArray ( m, k, 0, 9 );
+        Console.WriteLine ( "A matrix: " );
+        printInt2dArray ( a );
+
+        int [,] b = generateInt2dArray ( k, n, 0, 9 );
+        Console.WriteLine ( "B matrix: " );
+        printInt2dArray ( b );
+
+        int [,] result = multiply ( a, b );
+        Console.WriteLine ( "Matrix product: " );
+        printInt2dArray ( result );
     }
 }
