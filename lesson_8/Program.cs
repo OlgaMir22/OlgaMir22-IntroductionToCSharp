@@ -33,7 +33,7 @@ void printInt2dArray ( int [,] arr )
         Console.WriteLine ( "" );
     }
 }
-/*
+
 {
     int [,] sortArrayRows ( int [,] arr )
     {
@@ -70,7 +70,7 @@ void printInt2dArray ( int [,] arr )
         Console.WriteLine ( "Result array: " );
         printInt2dArray ( arr );
     }
-}*/
+}
 
 /*
 Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
@@ -81,7 +81,7 @@ void printInt2dArray ( int [,] arr )
 5 2 6 7
 Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 */
-/*
+
 {   
     int [] calcRowsSums ( int [,] arr )
     {
@@ -145,9 +145,9 @@ void printInt2dArray ( int [,] arr )
         Console.WriteLine ( "" );
 
         int minRowIndex = findMinIndex ( rowsSums );
-        Console.Write ( $"Row index with minimal items : {minRowIndex}" );
+        Console.WriteLine ( $"Row index with minimal items : {minRowIndex}" );
     }
-}*/
+}
 
 /*
 Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
@@ -159,7 +159,7 @@ void printInt2dArray ( int [,] arr )
 15 18
 */
 
-/*
+
 {
     int [,] multiply ( int [,] a, int [,] b )
     {
@@ -207,7 +207,7 @@ void printInt2dArray ( int [,] arr )
         Console.WriteLine ( "Matrix product: " );
         printInt2dArray ( result );
     }
-}*/
+}
 
 /*
 Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
@@ -218,7 +218,7 @@ void printInt2dArray ( int [,] arr )
 26(1,0,1) 55(1,1,1)
 */
 
-/*
+
 {
     int [,,] generate3dIntUniqueArray ( int m, int n, int k )
     {
@@ -285,7 +285,7 @@ void printInt2dArray ( int [,] arr )
         print3dIntArray ( arr );
     }
 }
-*/
+
 
 /*
 Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
