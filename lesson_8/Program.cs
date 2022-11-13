@@ -158,6 +158,8 @@ void printInt2dArray ( int [,] arr )
 18 20
 15 18
 */
+
+/*
 {
     int [,] multiply ( int [,] a, int [,] b )
     {
@@ -190,7 +192,7 @@ void printInt2dArray ( int [,] arr )
     int k = Convert.ToInt32 ( Console.ReadLine () );
 
     if ( m <= 0 || n <= 0 || k <= 0 )
-        Console.WriteLine ( $"Row matrix sizes {m} or {n} or {k} are not a valid." );
+        Console.WriteLine ( $"Matrix sizes {m} or {n} or {k} are not a valid." );
     else
     {
         int [,] a = generateInt2dArray ( m, k, 0, 9 );
@@ -204,5 +206,80 @@ void printInt2dArray ( int [,] arr )
         int [,] result = multiply ( a, b );
         Console.WriteLine ( "Matrix product: " );
         printInt2dArray ( result );
+    }
+}*/
+
+/*
+Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+Массив размером 2 x 2 x 2
+66(0,0,0) 25(0,1,0)
+34(1,0,0) 41(1,1,0)
+27(0,0,1) 90(0,1,1)
+26(1,0,1) 55(1,1,1)
+*/
+{
+    int [,,] generate3dIntUniqueArray ( int m, int n, int k )
+    {
+        int [] hist = new int [100];
+        for ( int i = 0; i < hist.Length; ++i )
+            hist [i] = 0;
+
+        Random rnd = new Random ();
+
+        int [,,] result = new int [m, n, k];
+        for ( int x = 0; x < result.GetLength (0); ++x )
+        {
+            for ( int y = 0; y < result.GetLength (1); ++y )
+            {
+                for ( int z = 0; z < result.GetLength (2); ++z )
+                {
+                    do
+                    {
+                        result [x, y, z] = rnd.Next ( 0, 100 );
+                    }
+                    while ( hist [ result [x, y, z] ] != 0 );
+                    ++hist [ result [x, y, z] ];
+                }
+            }
+        }
+
+        return result;
+    }
+
+    void print3dIntArray ( int [,,] arr )
+    {
+        for ( int x = 0; x < arr.GetLength (0); ++x )
+        {
+            for ( int y = 0; y < arr.GetLength (1); ++y )
+            {
+                for ( int z = 0; z < arr.GetLength (2); ++z )
+                {
+                    int value = arr [x, y, z];
+                    Console.Write ( $"{value} ({x}, {y}, {z}) " );
+                }
+                Console.WriteLine ( "" );
+            }
+        }
+    }
+ 
+    Console.WriteLine ( "Task 60" );
+
+    Console.Write ( "Input array size m: " );
+    int m = Convert.ToInt32 ( Console.ReadLine () );
+
+    Console.Write ( "Input array size n: " );
+    int n = Convert.ToInt32 ( Console.ReadLine () );
+
+    Console.Write ( "Input array size k: " );
+    int k = Convert.ToInt32 ( Console.ReadLine () );
+
+    if ( m <= 0 || n <= 0 || k <= 0 )
+        Console.WriteLine ( $"Array sizes {m} or {n} or {k} are not a valid." );
+    if ( m * n * k > 100 )
+        Console.WriteLine ( $"Array with sizes {m}, {n}, {k} exceeds 100 unique elements." );
+    else
+    {
+        int [,,] arr = generate3dIntUniqueArray ( m, n, k );
+        print3dIntArray ( arr );
     }
 }
